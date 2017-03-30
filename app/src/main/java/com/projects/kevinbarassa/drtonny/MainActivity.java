@@ -1,7 +1,9 @@
 package com.projects.kevinbarassa.drtonny;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,10 +14,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.projects.kevinbarassa.drtonny.helper.SQLiteHandler;
+import com.projects.kevinbarassa.drtonny.helper.SessionManager;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    public static final String PREF_KEY_FIRST_START = "com.projects.kevinbarassa.drtonny.PREF_KEY_FIRST_START";
+    public static final int REQUEST_CODE_INTRO = 1;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -34,6 +42,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
+        /**
+         * Check if is user first run, ensure a Material Intro run
+         */
+
+        boolean firstStart = PreferenceManager.getDefaultSharedPreferences(this)
+                .getBoolean(PREF_KEY_FIRST_START, true);
+
+        if (firstStart) {
+            Intent intent = new Intent(this, MainIntroActivity.class);
+            startActivityForResult(intent, REQUEST_CODE_INTRO);
+        }
 
         setSupportActionBar(toolbar);
 
