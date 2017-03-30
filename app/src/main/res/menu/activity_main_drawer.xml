@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_white_24dp"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_person_white_24dp"
+            android:title="Quote History" />
+        <item
+            android:id="@+id/nav_get_quotes"
+            android:icon="@drawable/ic_person_white_24dp"
+            android:title="Get Quotes" />
+        <item
+            android:id="@+id/nav_send_quotes"
+            android:icon="@drawable/ic_person_white_24dp"
+            android:title="Send Quotes" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_person_white_24dp"
+                android:title="Share App" />
+        </menu>
+    </item>
+
+</menu>
